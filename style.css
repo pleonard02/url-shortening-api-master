@@ -166,6 +166,7 @@ footer {
     padding: 40px 55px;
     box-sizing: border-box;
     background-color: var(--purple-950);
+    background-image: url("./images/bg-shorten-desktop.svg");
     border-radius: 10px;
     overflow: hidden;
 }
@@ -310,6 +311,7 @@ footer {
 
 .boost-container {
     background-color: var(--purple-950);
+    background-image: url("./images/bg-boost-desktop.svg");
     position: relative;
     display: flex;
     flex-direction: column;
@@ -453,5 +455,105 @@ footer {
     #get-start-btn {
         width: 175px;
         font-size: 1rem;
+    }
+    .shorten-url-container {
+        flex-direction: column;
+        gap: 16px;
+        background-image: url("./images/bg-shorten-mobile.svg");
+        width: calc(100% - 48px);
+        min-height: auto;
+        margin: 70px auto -80px;
+        padding: 24px;
+    }
+
+    #shorten-link,
+    #shorten-btn {
+        width: 100%;
+        height: 48px;
+        flex: none;
+    }
+
+    #shorten-link {
+        padding: 0 16px;
+        font-size: 0.875rem;
+    }
+
+    #shorten-btn {
+        font-size: 1rem;
+    }
+
+    .recognition-records-customizable-containers {
+        grid-template-columns: 1fr;
+        gap: 80px;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .stat-card {
+        width: 100%;
+        height: auto;
+        min-height: 280px;
+        padding: 60px 30px 35px;
+        text-align: center;
+    }
+
+    .brand-recognition-card,
+    .detailed-records-card, 
+    .fully-customizable-card {
+        transform: none;
+    }
+
+    .icon-background {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .connecting-line {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+        width: 8px;
+        height: auto;
+        transform: translateX(-50%);
+    }
+
+    .more-information-container {
+        padding: 160px 24px 100px;
+        padding-bottom: 120px;
+    }
+    
+    .links {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 35px;
+
+        width: 100%;
+        padding: 55px 24px;
+        text-align: center;
+    }
+
+    .links h3 {
+        margin-bottom: 20px;
+    }
+
+    .links p {
+        margin: 12px 0;
+    }
+
+    .social-media-links {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .boost-container {
+        background-image: url("./images/bg-boost-mobile.svg");
+        height: 300px;
+        padding: 0 24px;
+        text-align: center;
+    }
+
+    .boost-container h3{
+        font-size: 1.6rem;
     }
 }
