@@ -23,9 +23,10 @@
       <button type="button" id="signup-btn">Sign Up</button>
     </div>
     <button
-      type="button",
+      type="button"
       class="menu-toggle"
       aria-label="Open navigation menu"
+      id="mobile-menu-toggle"
     >
     ☰
     </button>
@@ -40,7 +41,14 @@
       <img src="./images/illustration-working.svg" alt="office illustration" id="hero-image">
       </section>
       <div class="shorten-url-container">
-        <input type="url" name="shorten-link" id="shorten-link" placeholder="Shorten a link here...">
+        <input 
+          type="url" 
+          name="shorten-link" 
+          id="shorten-link" 
+          aria-describedby="url-error" 
+          placeholder="Shorten a link here..."
+        >
+        <p id="url-error" class="error-message" aria-live="polite"></p>
         <button type="button" id="shorten-btn">Shorten It!</button>
       </div>
       <div id="shortened-links-container"></div>
@@ -110,6 +118,6 @@
       </div>
     </section>
   </footer>
-  <script src="./url-shortening-api-master/src/main.ts"></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
