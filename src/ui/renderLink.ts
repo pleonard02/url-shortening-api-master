@@ -33,9 +33,15 @@ export function renderLink(
                     button.textContent = "Copy";
                     button.classList.remove("copied");
                 });
-            
+
             copyButton.textContent = "Copied!";
             copyButton.classList.add("copied");
+
+            window.setTimeout(() => {
+                copyButton.textContent = "Copy";
+                copyButton.classList.remove("copied");
+            }, 1000);
+
         } catch {
             copyButton.textContent = "Copy failed";
         }
