@@ -32,6 +32,12 @@ footer {
     background-color: var(--gray-950);
 }
 
+.site-navigation {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
 .navbar-container {
     display: flex;
     align-items: center;
@@ -224,6 +230,11 @@ footer {
     border-radius: 8px;
     font-size: 1.125rem;
     font-weight: 600;
+}
+
+#shorten-btn:disabled {
+    cursor: wait;
+    opacity: 0.7;
 }
 
 #shortened-links-container {
@@ -472,13 +483,68 @@ footer {
 
 @media (max-width: 768px) {
     .navbar-container {
-        width: calc(100% - 48px);
-        padding: 24px 0;
+        position: relative;
+        z-index: 20;
     }
 
     .navbar,
     .button-container {
         display: none;
+    }
+
+    .site-navigation {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: calc(100% + 16px);
+        left: 0;
+        right: auto;
+        box-sizing: border-box;
+        z-index: 20;
+        flex-direction: column;
+        padding: 40px 24px;
+        border-radius: 10px;
+        background-color: var(--purple-950);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .site-navigation.is-open {
+        display: flex;
+    }
+
+    .site-navigation .navbar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 100%;
+        margin: 0;
+        padding: 0 0 30px;
+        border-bottom: 1px solid hsl(257, 7%, 45%);
+    }
+
+    .site-navigation .navbar a {
+        color: white;
+        font-size: 1.125rem;
+    }
+
+    .site-navigation .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        width: 100%;
+        margin: 30px 0 0;
+    }
+
+    .site-navigation #login-btn,
+    .site-navigation #signup-btn {
+        width: 100%;
+        font-size: 1.125rem;
+    }
+
+    .site-navigation #login-btn {
+        color: white;
+        background-color: transparent;
     }
 
     .menu-toggle {

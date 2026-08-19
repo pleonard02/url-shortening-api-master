@@ -12,23 +12,35 @@
 </head>
 <body>
   <header class="navbar-container">
-    <img src="./images/logo.svg" alt="Shortly logo" id="shortly-logo">
-    <ul class="navbar">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#resources">Resources</a></li>
-    </ul>
-    <div class="button-container">
-      <button type="button" id="login-btn">Login</button>
-      <button type="button" id="signup-btn">Sign Up</button>
-    </div>
+    <img
+      src="./images/logo.svg"
+      alt="Shortly"
+      id="shortly-logo"
+    >
+    <nav
+      class="site-navigation"
+      id="primary-navigation"
+      aria-label="Primary navigation"
+    >
+      <ul class="navbar">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+      <div class="button-container">
+        <button type="button" id="login-btn">Login</button>
+        <button type="button" id="signup-btn">Sign Up</button>
+      </div>
+    </nav>
     <button
       type="button"
       class="menu-toggle"
       aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
       id="mobile-menu-toggle"
     >
-    ☰
+      ☰
     </button>
   </header>
   <main>
@@ -40,17 +52,19 @@
       </div>
       <img src="./images/illustration-working.svg" alt="office illustration" id="hero-image">
       </section>
-      <div class="shorten-url-container">
-        <input 
-          type="url" 
-          name="shorten-link" 
-          id="shorten-link" 
-          aria-describedby="url-error" 
+      <form class="shorten-url-container" id="shorten-form" novalidate>
+        <input
+          type="url"
+          name="shorten-link"
+          id="shorten-link"
+          aria-label="URL to shorten"
+          aria-describedby="url-error"
           placeholder="Shorten a link here..."
+          required
         >
         <p id="url-error" class="error-message" aria-live="polite"></p>
         <button type="button" id="shorten-btn">Shorten It!</button>
-      </div>
+      </form>
       <div id="shortened-links-container"></div>
     <section class="more-information-container">
       <div class="advanced-stats-container">
