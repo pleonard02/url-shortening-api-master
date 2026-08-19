@@ -10,15 +10,15 @@ A responsive URL-shortening landing page built from the Frontend Mentor Shortly 
 
 ### Validation Error
 
-[!Shortly custom URL validation error](./images/validation_error.png)
+![Shortly custom URL validation error](./images/validation_error.png)
 
 ### Mobile
 
-[!Shortly mobile layout](./images/mobile.png)
+![Shortly mobile layout](./images/mobile.png)
 
 ### Mobile Navigation
 
-[!Shortly mobile navigation](./images/mobile_navigation.png)
+![Shortly mobile navigation](./images/mobile_navigation.png)
 
 ## Live Demo
 
