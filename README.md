@@ -1,108 +1,261 @@
-# Frontend Mentor - Shortly URL shortening API Challenge
+#
 
-![Design preview for the Shortly URL shortening API coding challenge](preview.jpg)
+A responsive URL-shortening landing page built from the Frontend Mentor Shortly design. The application integrates with the Bitly API, validates user input, renders shortened links dynamically, copies links to the clipboard, and preserves results between browser sessions with local storage.
 
-## Welcome! 👋
+## Screenshots
 
-Thanks for checking out this front-end coding challenge.
+### Desktop
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+![Shortly desktop layout](./images/desktop.png)
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+### Validation Error
 
-## The challenge
+[!Shortly custom URL validation error](./images/validation_error.png)
 
-Your challenge is to build out this landing page, integrate with the [Clean URI API](https://cleanuri.com/docs) and get it looking as close to the design as possible.
+### Mobile
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+[!Shortly mobile layout](./images/mobile.png)
 
-Your users should be able to:
+### Mobile Navigation
 
-- View the optimal layout for the site depending on their device's screen size
-- Shorten any valid URL
-- See a list of their shortened links, even after refreshing the browser
-- Copy the shortened link to their clipboard in a single click
-- Receive an error message when the `form` is submitted if:
-  - The `input` field is empty
+[!Shortly mobile navigation](./images/mobile_navigation.png)
 
-### Want some support on the challenge? 
+## Live Demo
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Live application: 
 
-## Where to find everything
+### GitHub repository: github.com/pleonard02/url-shortening-api-master
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+## Table of Contents 
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+- Overview
+- Features
+- Built With
+- Project Architecture
+- Getting Started
+- Environment Variables
+- Available Scripts
+- How It Works
+- Validation and Error Handling
+- Accessibility
+- Responsive Design
+- Testing Checklist
+- Reflection
+- Future Improvements
+- Acknowledgments
 
-If you would like the Figma design file to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## Overview 
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+This project recreates the supplied desktop, mobile, and active-state designs for the Shortly URL-shortening challenge. Its primary goal is to provide a polished responsive interface while demonstrating TypeScript, asynchronous programming, API integration, custom error handling, DOM manipulation, browser storage, and modular application architecture.
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+Users can enter a complete URL, request a shortened Bitly link, copy the result, and return to their previously generated links after refreshing the browser.
 
-## Using AI coding assistants
+## Features
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+  - Shortens valid URLs through the Bitly v4 API 
+  - Validates empty and malformed URL input before making an API request
+  - Displays custom, accessible error messages
+  - Dynamically renders the original and shortened URLs
+  - Copies a shortened URL to the clipboard with one click
+  - Provides temporary visual feedback after a successful copy
+  - Preserves shortened links with localStorage
+  - Restores saved links when the page reloads
+  - Prevents malformed stored data from breaking the interface
+  - Includes responsive desktop and mobile layouts
+  - Includes an accessible mobile navigation menu
+  - Supports form submission by button click or Enter key
+  - Provides hover, focus, active, copied, and error states for interactive elements
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+## Built With
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+  - Semantic HTML5
+  - CSS3
+    - Flexbox
+    - CSS Grid
+    - Custom properties
+    - Responsive media queries
+  - TypeScript
+  - Vite
+  - Bitly v4 API
+  - Fetch API
+  - Clipboard API
+  - Web Storage API (localStorage)
+  - Git and GitHub
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+## Project Architecture
 
-## Building your project
+The TypeScript is separated by responsibility so that API communication, data models, rendering, storage, validation, and application coordination are not combined in one large file.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+src/
+|-- main.ts
+|-- models/
+|   `-- ShortenedLinks.ts
+|-- services/
+|   `-- BitlyClient.ts
+|-- ui/
+|   `-- renderLink.ts
+`-- utils/
+    |-- errorHandler.ts
+    `-- storage.ts
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+## Project Architecture
 
-## Deploying your project
+The TypeScript is separated by responsibility so that API communication, data models, rendering, storage, validation, and application coordination are not combined in one large file.
 
-It's worth noting that you may run into a [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) error once you host your project that prevents the API request from succeeding. To prevent this, you'll need to research proxy servers or how to implement one yourself. As mentioned above, there are many ways to host your project for free. Our recommended hosts for this challenge (because they allow for serverless functions if needed for the proxy) are:
+| File | Responsibility |
+| --- | --- |
+| `main.ts` | Selects DOM elements, coordinates events, validates submissions, calls the API client, renders results, and updates storage. |
+| `models/ShortenedLinks.ts` | Defines the `ShortenedLink` TypeScript interface used across the application. |
+| `services/BitlyClient.ts` | Encapsulates Bitly authentication and the asynchronous shortening request. |
+| `ui/renderLink.ts` | Creates result markup, configures safe external links, and handles clipboard interaction. |
+| `utils/errorHandler.ts` | Contains validation logic, reusable error messages, custom error classes, and input-error helpers. |
+| `utils/storage.ts` | Loads and saves links and validates unknown data retrieved from local storage. |
 
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+## Getting Started
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+### Prerequisites
 
-## Create a custom `README.md`
+  - Node.js and npm
+  - A Bitly account and access token
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+## Installation
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+  1. Clone the repository:
+    git clone https://github.com/pleonard02/url-shortening-api-master.git
+  2. Enter the project directory: 
+    cd url-shortening-api-master
+  3. Install the dependencies:
+    npm install
+  4. Create a .env file in the project root:
+    VITE_BITLY_TOKEN=your_bitly_access_token
+  5. Start the development server: 
+    npm run dev
+  6. Open the local URL printed by Vite in a browser.
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+## Environment Variables
 
-## Submitting your solution
+| Variable | Purpose |
+| --- | --- |
+| `VITE_BITLY_TOKEN` | Authorizes requests to the Bitly URL-shortening endpoint. |
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+The .env file is excluded from version control and must not be committed.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+  Security note: Vite exposes variables prefixed with VITE_ to client-side code. This project follows the coursework requirement for direct API integration and should be treated as an educational prototype. A production implementation should send Bitly requests through a protected backend or serverless function so the access token is never included in browser-delivered JavaScript.
 
-## Sharing your solution
+## Available Scripts
 
-There are multiple places you can share your solution:
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Starts the Vite development server. |
+| `npm run build` | Runs the TypeScript compiler and creates the production build. |
+| `npm run preview` | Serves the production build locally for final verification. |
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community).
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+## How It Works
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+  1. The application loads saved results from localStorage.
+  2. Each valid saved object is rendered into the shortened-links container.
+  3. The user submits a URL through the shortening form.
+  4. validateUrl() trims and validates the input before any network request is made.
+  5. BitlyClient.shorten() sends an asynchronous POST request to Bitly.
+  6. An unsuccessful response produces a typed ApiError containing the HTTP status.
+  7. A successful response is rendered immediately and saved locally.
+  8. The Copy button writes the short URL to the clipboard and provides temporary confirmation.
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+## Validation and Error Handling
 
-## Got feedback for us?
+The application distinguishes between user-input errors, API errors, and unexpected failures.
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+  - Empty input produces a clear request to add a link.
+  - Invalid input asks for a complete URL, including the protocol.
+  - HTTP failures are converted into a custom ApiError.
+  - Network or unexpected errors are caught so they do not produce an unhandled rejection.
+  - Invalid or corrupted local-storage values are discarded safely through a TypeScript type guard.
+  - Error styling and aria-invalid are removed when the user begins correcting the input.
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+Validation occurs before the Bitly request, avoiding unnecessary API usage.
 
-**Have fun building!** 🚀
+## Accessibility 
+
+  - The document declares its language and uses semantic page landmarks.
+  - The URL controls are grouped in a semantic form.
+  - The URL field has an accessible name and identifies its associated error message.
+  - The error region uses aria-live="polite" so validation feedback can be announced.
+  - Invalid input is identified with aria-invalid.
+  - The form supports keyboard submission with Enter.
+  - Buttons use native button elements and visible focus states.
+  - The mobile menu communicates its state through aria-expanded and aria-controls.
+  - The mobile menu can be dismissed with the Escape key.
+  - External shortened links open safely with noopener noreferrer.
+  - Meaningful images include alternative text, while navigation remains keyboard accessible.
+
+## Responsive Design
+
+The interface follows the supplied desktop and mobile compositions while allowing content to adapt between those endpoints.
+
+  - Shared maximum content widths keep desktop sections aligned.
+  - CSS Grid creates the desktop hero, statistics cards, results, and footer layouts.
+  - Flexbox manages navigation and form controls.
+  - Mobile media queries reorder the hero, stack form controls and results, convert the statistics connector from horizontal to vertical, and transform the desktop navigation into an expandable menu.
+  - Long URLs use overflow handling so they do not break the layout.
+  - Desktop and mobile background assets are selected at the appropriate breakpoint.
+
+## Testing Checklist
+
+The application was manually verified for the following behavior:
+
+  - [x] Empty submissions display the custom required-field error
+  - [x] Invalid URLs display the custom format error
+  - [x] Valid URLs are shortened and displayed dynamically
+  - [x] Validation failures do not make Bitly requests
+  - [x] Copy writes the shortened URL to the clipboard
+  - [x] Saved links return after a page refresh
+  - [x] The form can be submitted with Enter
+  - [x] The mobile menu opens and closes
+  - [x] The mobile menu closes with Escape
+  - [x] The layout adapts across mobile and desktop widths
+  - [x] `npm run build` completes without TypeScript errors
+  - [ ] Live deployment has been tested
+
+## Reflection
+
+### Challenges
+
+The most demanding part of this project was coordinating the responsive layout across the supplied desktop and mobile designs. Several elements intentionally cross section boundaries, including the shortening form, while the statistics cards use different vertical offsets on desktop and a single connected column on mobile. Long dynamic URLs introduced another layout constraint because their length cannot be predicted from the static design.
+
+The project also required careful management of the Bitly API request limit. I needed to ensure that empty and malformed values were rejected before fetch() ran and that the interface did not encourage duplicate submissions. Testing validation separately from live API behavior allowed me to debug without wasting requests.
+
+Another challenge was reorganizing an accidentally nested Vite project. Git initially reported deleted files at the old location and untracked files at the corrected location. Reviewing the staged changes showed that Git recognized most of the cleanup as file renames, which allowed me to preserve the work and maintain a clear project structure.
+
+### Solutions and Learning
+
+I separated the application into focused modules instead of leaving all behavior in main.ts. The BitlyClient class now owns the endpoint, authorization, and request behavior. Reusable validation and custom errors live in errorHandler.ts; storage logic lives in storage.ts; and DOM construction and clipboard behavior live in renderLink.ts. The ShortenedLink interface gives those modules a shared contract.
+
+This structure helped me understand how asynchronous operations move through an application: a form event triggers validation, validation protects the API call, the API client returns a typed Promise, the result is rendered, and the updated collection is persisted. It also reinforced that TypeScript assertions do not validate runtime data, which is why stored values are checked with a type guard before being used.
+
+For accessibility, I changed the URL controls to a semantic form without altering the supplied visual design. This added Enter-key submission while preserving the same button and CSS class. I also connected the input to its live error message and implemented state attributes for the mobile navigation.
+
+### What I Would Improve
+
+For a production release, my first improvement would be moving the Bitly request into a backend or serverless function so the access token is never exposed to the browser. I would also add automated unit tests for URL validation and storage parsing, integration tests for rendering and form behavior, and end-to-end tests for keyboard navigation and responsive menus. Additional improvements could include deleting individual saved results, limiting storage history, and communicating rate-limit status more clearly.
+
+## Future Improvements
+
+  - Move Bitly authentication behind a backend or serverless proxy
+  - Add unit, integration, accessibility, and end-to-end tests
+  - Allow users to remove individual saved links or clear their history
+  - Prevent duplicate URLs from appearing repeatedly
+  - Add explicit rate-limit feedback
+  - Add non-color status messaging for clipboard failures
+  - Evaluate stored-data versioning if the result model expands
+
+## Acknowledgments
+
+  - Challenge and design assets provided by Frontend Mentor
+  - URL-shortening service provided by Bitly
+  - Typography provided through Google Fonts
+
+## Author
+
+### Priscilla Leonard
+
+  - GitHub: @pleonard02

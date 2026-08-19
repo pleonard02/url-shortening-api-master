@@ -53,17 +53,19 @@
       <img src="./images/illustration-working.svg" alt="office illustration" id="hero-image">
       </section>
       <form class="shorten-url-container" id="shorten-form" novalidate>
-        <input
-          type="url"
-          name="shorten-link"
-          id="shorten-link"
-          aria-label="URL to shorten"
-          aria-describedby="url-error"
-          placeholder="Shorten a link here..."
-          required
-        >
-        <p id="url-error" class="error-message" aria-live="polite"></p>
-        <button type="button" id="shorten-btn">Shorten It!</button>
+        <div class="shorten-input-group">
+          <input
+            type="url"
+            name="shorten-link"
+            id="shorten-link"
+            aria-label="URL to shorten"
+            aria-describedby="url-error"
+            placeholder="Shorten a link here..."
+            required
+          >
+          <p id="url-error" class="error-message" aria-live="polite"></p>
+        </div>
+        <button type="submit" id="shorten-btn">Shorten It!</button>
       </form>
       <div id="shortened-links-container"></div>
     <section class="more-information-container">

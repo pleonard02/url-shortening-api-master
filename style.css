@@ -103,7 +103,13 @@ footer {
 }
 
 .error-message {
-    margin: 6px 0 0;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    margin: 0;
+    color: var(--red-400);
+    font-size: 0.875rem;
+    font-style: italic;
 }
 
 .error-message:empty {
@@ -170,6 +176,16 @@ footer {
     border: none;
     border-radius: 25px;
     font-size: 1.35rem;
+}
+
+.shorten-input-group {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+#shorten-link {
+    width: 100%;
 }
 
 .shorten-url-container {
@@ -639,6 +655,17 @@ footer {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    .shorten-input-group {
+        width: 100%;
+        flex: none;
+    }
+
+    .error-message {
+        position: static;
+        margin-top: 6px;
+        text-align: left;
     }
 
     .short-url {
