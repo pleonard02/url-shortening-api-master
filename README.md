@@ -22,7 +22,7 @@ A responsive URL-shortening landing page built from the Frontend Mentor Shortly 
 
 ## Live Demo
 
-### Live application: 
+### Live application: [View the deployed application](https://priscilla-shortly.netlify.app)
 
 ### GitHub repository: github.com/pleonard02/url-shortening-api-master
 
@@ -214,7 +214,7 @@ The application was manually verified for the following behavior:
   - [x] The mobile menu closes with Escape
   - [x] The layout adapts across mobile and desktop widths
   - [x] `npm run build` completes without TypeScript errors
-  - [ ] Live deployment has been tested
+  - [x] Live deployment has been tested
 
 ## Reflection
 
